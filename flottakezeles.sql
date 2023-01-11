@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost
--- Létrehozás ideje: 2023. Jan 08. 15:52
+-- Létrehozás ideje: 2023. Jan 11. 17:33
 -- Kiszolgáló verziója: 10.3.36-MariaDB-0+deb10u2
 -- PHP verzió: 7.3.31-1~deb10u2
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `flottakezeles`
 --
+CREATE DATABASE IF NOT EXISTS `flottakezeles` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `flottakezeles`;
 
 -- --------------------------------------------------------
 
@@ -59,6 +61,28 @@ CREATE TABLE `ugyfelek` (
   `cegnev` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `szekhely` varchar(100) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- Indexek a kiírt táblákhoz
+--
+
+--
+-- A tábla indexei `gepjarmuvek`
+--
+ALTER TABLE `gepjarmuvek`
+  ADD PRIMARY KEY (`rendszam`);
+
+--
+-- A tábla indexei `karugy`
+--
+ALTER TABLE `karugy`
+  ADD PRIMARY KEY (`karszam`);
+
+--
+-- A tábla indexei `ugyfelek`
+--
+ALTER TABLE `ugyfelek`
+  ADD PRIMARY KEY (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
