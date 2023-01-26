@@ -1,0 +1,3 @@
+Gépjármű flottakezelés
+
+Mi egy gépjármű flottakezelőnek az adatbázisát szeretnénk megvalósítani. Az adatbázisunk az alábbi táblákból áll: gepjarmuvek, karugy, ugyfelek.
