@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost
--- Létrehozás ideje: 2023. Jan 11. 17:33
+-- Létrehozás ideje: 2023. Jan 31. 16:30
 -- Kiszolgáló verziója: 10.3.36-MariaDB-0+deb10u2
 -- PHP verzió: 7.3.31-1~deb10u2
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `flottakezeles`
 --
-CREATE DATABASE IF NOT EXISTS `flottakezeles` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
-USE `flottakezeles`;
 
 -- --------------------------------------------------------
 
@@ -70,19 +68,37 @@ CREATE TABLE `ugyfelek` (
 -- A tábla indexei `gepjarmuvek`
 --
 ALTER TABLE `gepjarmuvek`
-  ADD PRIMARY KEY (`rendszam`);
+  ADD PRIMARY KEY (`rendszam`),
+  ADD KEY `berloID` (`berloID`);
 
 --
 -- A tábla indexei `karugy`
 --
 ALTER TABLE `karugy`
-  ADD PRIMARY KEY (`karszam`);
+  ADD PRIMARY KEY (`karszam`),
+  ADD KEY `berloID` (`berloID`);
 
 --
 -- A tábla indexei `ugyfelek`
 --
 ALTER TABLE `ugyfelek`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Megkötések a kiírt táblákhoz
+--
+
+--
+-- Megkötések a táblához `gepjarmuvek`
+--
+ALTER TABLE `gepjarmuvek`
+  ADD CONSTRAINT `gepjarmuvek_ibfk_1` FOREIGN KEY (`berloID`) REFERENCES `ugyfelek` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `karugy`
+--
+ALTER TABLE `karugy`
+  ADD CONSTRAINT `karugy_ibfk_1` FOREIGN KEY (`berloID`) REFERENCES `ugyfelek` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
