@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2023. Jan 31. 16:30
--- Kiszolgáló verziója: 10.3.36-MariaDB-0+deb10u2
--- PHP verzió: 7.3.31-1~deb10u2
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2023. Feb 09. 11:03
+-- Kiszolgáló verziója: 10.4.24-MariaDB
+-- PHP verzió: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `flottakezeles`
 --
+CREATE DATABASE IF NOT EXISTS `flottakezeles` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci;
+USE `flottakezeles`;
 
 -- --------------------------------------------------------
 
